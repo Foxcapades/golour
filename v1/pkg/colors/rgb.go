@@ -65,3 +65,14 @@ func (this *RGB) SetAlpha(alpha uint8) {
 func (this RGB) String() string {
 	return this.CSSFuncRGBA()
 }
+
+func (this RGB) RawValueNoAlpha() uint32 {
+	return uint32(this.red) << 16 | uint32(this.green) << 8 | uint32(this.blue)
+}
+
+func (this RGB) RawValueWithAlpha() uint32 {
+	return uint32(this.red) << 24 |
+		uint32(this.green) << 16 |
+		uint32(this.blue) << 8 |
+		uint32(this.alpha)
+}
