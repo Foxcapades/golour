@@ -1,0 +1,35 @@
+= Colors!
+
+Go wrappers and converters for various color formats with no standard library
+dependency (outside of unit tests).
+
+Intended for use with alternative compilers such as https://tinygo.org/[TinyGo]
+for use with JS/WASM build targets.
+
+Currently, golour supports HSV/HSB, HSL, and RGB color formats and can translate
+between these types.
+
+Each color type can additionally render itself in one or more JS/CSS friendly
+formats, such as hex strings or CSS color functions.
+
+== Examples
+
+.RGB From Hex String
+[source, go]
+----
+package main
+
+import (
+	"fmt"
+	"github.com/foxcapades/golour/v1/pkg/colors"
+)
+
+func main() {
+  rgb := colors.NewRGBFromHex("#FFEEDD")
+  fmt.Println(rgb)              // Outputs: rgba(255, 238, 221, 255)
+  fmt.Println(rgb.HexRGB())     // Outputs: #FFEEDD
+  fmt.Println(rgb.CSSFuncRGB()) // Outputs: rgb(255, 238, 221)
+  fmt.Println(rgb.ToHSL())      // Outputs: hsla(30, 100%, 93.3%, 1)
+}
+----
+
