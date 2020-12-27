@@ -5,10 +5,10 @@ import (
 )
 
 // ToHSL returns an HSL value translated from this RGB value.
-func (this RGB) ToHSL() (out HSL) {
-	r := float32(this.Red()) / 255
-	g := float32(this.Green()) / 255
-	b := float32(this.Blue()) / 255
+func (R RGB) ToHSL() (out HSL) {
+	r := float32(R.Red()) / 255
+	g := float32(R.Green()) / 255
+	b := float32(R.Blue()) / 255
 
 	max := util.MaxF32(r, g, b)
 	min := util.MinF32(r, g, b)
@@ -37,7 +37,7 @@ func (this RGB) ToHSL() (out HSL) {
 	out.SetHue(int16(util.BluntRound(H/10)*10))
 	out.SetSaturation(S)
 	out.SetLightness(L)
-	out.SetAlpha(util.TruncateF32(float32(this.Alpha()) / 255, floatPrecision))
+	out.SetAlpha(util.TruncateF32(float32(R.Alpha()) / 255, floatPrecision))
 
 	return
 }

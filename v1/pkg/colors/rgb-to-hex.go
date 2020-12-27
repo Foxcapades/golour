@@ -7,30 +7,30 @@ import (
 
 // HexRGB returns this RGB value as a standard 6 digit hex color code
 // including the leading '#' character.
-func (this RGB) HexRGB() string {
+func (R RGB) HexRGB() string {
 	off := tally.UTally8(0)
 	out := [7]byte{}
-	this.hexRgb(out[:], &off)
+	R.hexRgb(out[:], &off)
 
 	return string(out[:])
 }
 
 // HexRGBA returns this RGB value as an 8 digit hex color code
 // including the leading '#' character.
-func (this RGB) HexRGBA() string {
+func (R RGB) HexRGBA() string {
 	out := [9]byte{}
 	off := tally.UTally8(0)
-	this.hexRgb(out[:], &off)
+	R.hexRgb(out[:], &off)
 
-	util.AppendHex(this.alpha, out[:], &off)
+	util.AppendHex(R.alpha, out[:], &off)
 
 	return string(out[:])
 }
 
-func (this *RGB) hexRgb(val []byte, off *tally.UTally8) {
+func (R *RGB) hexRgb(val []byte, off *tally.UTally8) {
 	val[off.Inc()] = '#'
 
-	util.AppendHex(this.red, val, off)
-	util.AppendHex(this.green, val, off)
-	util.AppendHex(this.blue, val, off)
+	util.AppendHex(R.red, val, off)
+	util.AppendHex(R.green, val, off)
+	util.AppendHex(R.blue, val, off)
 }

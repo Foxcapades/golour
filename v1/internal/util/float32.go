@@ -5,6 +5,16 @@ import (
 	"github.com/foxcapades/tally-go/v1/tally"
 )
 
+func ClampF32(value, min, max float32) float32 {
+	if value > max {
+		return max
+	} else if value < min {
+		return min
+	} else {
+		return value
+	}
+}
+
 func TruncateF32(value float32, precision int) float32 {
 	mag := IPow(10, precision)
 	return float32(int64(value*float32(mag))) / float32(mag)

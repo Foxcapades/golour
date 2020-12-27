@@ -6,11 +6,11 @@ import (
 	"github.com/foxcapades/tally-go/v1/tally"
 )
 
-func (this RGB) CSSFuncRGBA() string {
-	r := this.Red()
-	g := this.Green()
-	b := this.Blue()
-	a := this.Alpha()
+func (R RGB) CSSFuncRGBA() string {
+	r := R.Red()
+	g := R.Green()
+	b := R.Blue()
+	a := R.Alpha()
 
 	buf := make([]byte, bytify.Uint8StringSize(r)+
 		bytify.Uint8StringSize(g)+
@@ -34,10 +34,10 @@ func (this RGB) CSSFuncRGBA() string {
 	return string(buf)
 }
 
-func (this RGB) CSSFuncRGB() string {
-	r := this.Red()
-	g := this.Green()
-	b := this.Blue()
+func (R RGB) CSSFuncRGB() string {
+	r := R.Red()
+	g := R.Green()
+	b := R.Blue()
 
 	// rgb(, , )
 	buf := make([]byte, bytify.Uint8StringSize(r)+
