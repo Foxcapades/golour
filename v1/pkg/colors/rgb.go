@@ -14,6 +14,24 @@ func NewRGBA(r, g, b, a uint8) RGB {
 	return RGB{r, g, b, a}
 }
 
+func NewRGBF32(r, g, b float32) RGB {
+	return RGB{
+		red: uint8(util.ClampF32(r) * 255),
+		green: uint8(util.ClampF32(g) * 255),
+		blue: uint8(util.ClampF32(b) * 255),
+		alpha: 255,
+	}
+}
+
+func NewRGBAF32(r, g, b, a float32) RGB {
+	return RGB{
+		red: uint8(util.ClampF32(r) * 255),
+		green: uint8(util.ClampF32(g) * 255),
+		blue: uint8(util.ClampF32(b) * 255),
+		alpha: uint8(util.ClampF32(a) * 255),
+	}
+}
+
 // RGB defines an RGB color value including an alpha channel value.
 //
 // Note: Alpha values in RGB hex codes is in early stages of browser adoption
@@ -51,7 +69,7 @@ func (R RGB) RedF32() float32 {
 // Value is translated as:
 //   ⌊red * 255⌋
 func (R *RGB) SetRedF32(red float32) {
-	R.red = uint8(util.ClampF32(red, 0, 1) * 255)
+	R.red = uint8(util.ClampF32(red) * 255)
 }
 
 // Green returns the green channel value for this RGB(A) color.
@@ -78,7 +96,7 @@ func (R RGB) GreenF32() float32 {
 // Value is translated as:
 //   ⌊green * 255⌋
 func (R *RGB) SetGreenF32(green float32) {
-	R.green = uint8(util.ClampF32(green, 0, 1) * 255)
+	R.green = uint8(util.ClampF32(green) * 255)
 }
 
 // Blue returns the blue channel value for this RGB(A) color.
@@ -105,7 +123,7 @@ func (R RGB) BlueF32() float32 {
 // Value is translated as:
 //   ⌊blue * 255⌋
 func (R *RGB) SetBlueF32(blue float32) {
-	R.blue = uint8(util.ClampF32(blue, 0, 1) * 255)
+	R.blue = uint8(util.ClampF32(blue) * 255)
 }
 
 // Alpha returns the alpha channel value for this RGB(A) color.
@@ -135,7 +153,7 @@ func (R RGB) AlphaF32() float32 {
 // Value is translated as:
 //   ⌊alpha * 255⌋
 func (R *RGB) SetAlphaF32(alpha float32) {
-	R.alpha = uint8(util.ClampF32(alpha, 0, 1) * 255)
+	R.alpha = uint8(util.ClampF32(alpha) * 255)
 }
 
 func (R RGB) String() string {

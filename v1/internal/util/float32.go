@@ -5,11 +5,11 @@ import (
 	"github.com/foxcapades/tally-go/v1/tally"
 )
 
-func ClampF32(value, min, max float32) float32 {
-	if value > max {
-		return max
-	} else if value < min {
-		return min
+func ClampF32(value float32) float32 {
+	if value < 0 {
+		return 0
+	} else if value > 1 {
+		return 1
 	} else {
 		return value
 	}

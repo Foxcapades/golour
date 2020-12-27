@@ -142,3 +142,23 @@ func TestRGB_AlphaF32(t *testing.T) {
 		So(test.AlphaF32(), ShouldEqual, 0.5)
 	})
 }
+
+func TestNewRGBF32(t *testing.T) {
+	Convey("NewRGBF32", t, func() {
+		test := NewRGBF32(0, 0.5, 1)
+		So(test.Red(), ShouldEqual, 0)
+		So(test.Green(), ShouldEqual, 127)
+		So(test.Blue(), ShouldEqual, 255)
+		So(test.Alpha(), ShouldEqual, 255)
+	})
+}
+
+func TestNewRGBAF32(t *testing.T) {
+	Convey("NewRGBAF32", t, func() {
+		test := NewRGBAF32(0, 0.33, 0.66, 1)
+		So(test.Red(), ShouldEqual, 0)
+		So(test.Green(), ShouldEqual, 84)
+		So(test.Blue(), ShouldEqual, 168)
+		So(test.Alpha(), ShouldEqual, 255)
+	})
+}

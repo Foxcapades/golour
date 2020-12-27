@@ -11,19 +11,19 @@ func TestClampF32(t *testing.T) {
 	Convey("ClampF32", t, func() {
 		Convey("Given a value less than the minimum", func() {
 			Convey("returns the minimum value", func() {
-				So(util.ClampF32(10, 12, 13), ShouldEqual, 12)
+				So(util.ClampF32(-1), ShouldEqual, 0)
 			})
 		})
 
 		Convey("Given a value greater than the maximum", func() {
 			Convey("returns the minimum value", func() {
-				So(util.ClampF32(15, 12, 13), ShouldEqual, 13)
+				So(util.ClampF32(15), ShouldEqual, 1)
 			})
 		})
 
 		Convey("Given a value between the minimum and maximum", func() {
 			Convey("returns the minimum value", func() {
-				So(util.ClampF32(12, 11, 13), ShouldEqual, 12)
+				So(util.ClampF32(0.5), ShouldEqual, 0.5)
 			})
 		})
 	})
